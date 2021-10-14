@@ -8,5 +8,6 @@ public class Main {
         int[] zahl2 = new int[]{8, 2, 0, 0, 0, 0, 0, 0, 0};
 
         System.out.println(java.util.Arrays.toString(m.add(zahl1, zahl2)));
+        System.out.println(java.util.Arrays.toString(m.diff(zahl1, zahl2)));
     }
 }
