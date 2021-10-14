@@ -56,4 +56,27 @@ public class Methods {
         return diff;
     }
 
+    /**
+     * Multiply between an array treated as a decimal
+     * representation of a number and a digit
+     * @param zahl: number represented on array
+     * @param ziffer: integer digit
+     * @return: Multiply of zahl and ziffer
+     */
+    public int[] mul(int[] zahl, int ziffer) {
+        int[] mul = new int[zahl.length + 1];
+        for (int i = zahl.length - 1; i >= 0; i--) {
+            mul[i + 1] += zahl[i] * ziffer;
+            mul[i] += mul[i + 1] / 10;
+            mul[i + 1] %= 10;
+        }
+
+        if (mul[0] == 0) {
+            int[] new_mul = new int[zahl.length];
+            System.arraycopy(mul, 1, new_mul, 0, mul.length - 1);
+            return new_mul;
+        }
+        return mul;
+    }
+
 }
