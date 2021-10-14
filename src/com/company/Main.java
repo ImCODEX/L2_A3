@@ -11,5 +11,6 @@ public class Main {
         System.out.println(java.util.Arrays.toString(m.add(zahl1, zahl2)));
         System.out.println(java.util.Arrays.toString(m.diff(zahl1, zahl2)));
         System.out.println(java.util.Arrays.toString(m.mul(zahl3, 9)));
+        System.out.println(java.util.Arrays.toString(m.div(zahl3, 9)));
     }
 }

@@ -79,4 +79,37 @@ public class Methods {
         return mul;
     }
 
+    /**
+     * division between an array treated as a decimal
+     * representation of a number and a digit
+     * @param zahl: number represented on array
+     * @param ziffer: integer digit
+     * @return: division of zahl and ziffer
+     */
+    public int[] div(int[] zahl, int ziffer) {
+        int[] div = new int[zahl.length];
+        int i = 0, j = 0, buff = 0;
+        if (zahl[0] / ziffer == 0){
+            j++;
+        }
+        while (i < zahl.length) {
+            buff = buff * 10 + zahl[i];
+            if (buff / ziffer != 0) {
+                div[j] = buff / ziffer;
+                j++;
+                buff %= ziffer;
+            }
+
+            i++;
+        }
+
+        if (div[0] == 0) {
+            int[] new_div = new int[zahl.length - 1];
+            System.arraycopy(div, 1, new_div, 0, div.length - 1);
+            return new_div;
+        }
+        return div;
+    }
+
+
 }
