@@ -5,6 +5,7 @@ public class Methods {
     /**
      * Sum between two arrays with the same length
      * treated as a decimal representation of a number
+     *
      * @param zahl1: number represented on array
      * @param zahl2: number represented on array
      * @return: sum of zahl1 and zahl2
@@ -12,6 +13,9 @@ public class Methods {
     public int[] add(int[] zahl1, int[] zahl2) {
         int[] sum = new int[zahl1.length + 1];
         //create sum array with len+1 in case of overflow
+        if (zahl1.length != zahl2.length)
+            throw new IndexOutOfBoundsException("Arrays should be equal in size!");
+
         for (int i = zahl1.length - 1; i >= 0; i--) {
             //sum, overflow treated
             sum[i + 1] += zahl1[i] + zahl2[i];
@@ -20,11 +24,12 @@ public class Methods {
                 sum[i + 1] -= 10;
             }
         }
+
         //in case of no overflow, remove first 0
         if (sum[0] == 0) {
-            int[] new_sum = new int[zahl1.length];
-            System.arraycopy(sum, 1, new_sum, 0, sum.length - 1);
-            return new_sum;
+            int[] newSum = new int[zahl1.length];
+            System.arraycopy(sum, 1, newSum, 0, sum.length - 1);
+            return newSum;
         }
         return sum;
     }
@@ -34,6 +39,7 @@ public class Methods {
      * treated as a decimal representation of a number
      * with most significant digit a negative number if the
      * difference is negative
+     *
      * @param zahl1: number represented on array
      * @param zahl2: number represented on array
      * @return: difference of zahl1 and zahl2
@@ -64,7 +70,8 @@ public class Methods {
     /**
      * Multiply between an array treated as a decimal
      * representation of a number and a digit
-     * @param zahl: number represented on array
+     *
+     * @param zahl:   number represented on array
      * @param ziffer: integer digit
      * @return: Multiply of zahl and ziffer
      */
@@ -81,9 +88,9 @@ public class Methods {
 
         //if not overflow remove first digit
         if (mul[0] == 0) {
-            int[] new_mul = new int[zahl.length];
-            System.arraycopy(mul, 1, new_mul, 0, mul.length - 1);
-            return new_mul;
+            int[] newMul = new int[zahl.length];
+            System.arraycopy(mul, 1, newMul, 0, mul.length - 1);
+            return newMul;
         }
         return mul;
     }
@@ -91,7 +98,8 @@ public class Methods {
     /**
      * division between an array treated as a decimal
      * representation of a number and a digit
-     * @param zahl: number represented on array
+     *
+     * @param zahl:   number represented on array
      * @param ziffer: integer digit
      * @return: division of zahl and ziffer
      */
@@ -101,7 +109,7 @@ public class Methods {
         int i = 0, j = 0, buff = 0;
         //case if most significant digit is not dividable by ziffer
         //sets most significant digit from div array to 0
-        if (zahl[0] / ziffer == 0){
+        if (zahl[0] / ziffer == 0) {
             j++;
         }
         //divide
@@ -118,9 +126,9 @@ public class Methods {
 
         //remove first digit in case of not overflow
         if (div[0] == 0) {
-            int[] new_div = new int[zahl.length - 1];
-            System.arraycopy(div, 1, new_div, 0, div.length - 1);
-            return new_div;
+            int[] newDiv = new int[zahl.length - 1];
+            System.arraycopy(div, 1, newDiv, 0, div.length - 1);
+            return newDiv;
         }
         return div;
     }
